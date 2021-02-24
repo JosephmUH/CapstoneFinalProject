@@ -3,7 +3,7 @@
     <!-- Nav bar -->
     <nav class="navbar navbar-dark bg-secondary justify-content-between flex-nowrap flex-row">
       <div class="container">
-        <a class="navbar-brand float-center">Interview Tracking SPA</a>
+        <a class="navbar-brand float-center">Capstone Skeleton</a>
         <ul class="nav navbar-nav flex-row float-center">
           <li class="nav-item">
             <router-link class="nav-link pr-3" to="/">Home</router-link>
