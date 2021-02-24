@@ -26,8 +26,8 @@
       <p>
         <span>
 
-          <strong>Joseph Mercado - Final Project</strong><br>
-           Copyright @JosephMercado, 2020
+          <strong>Capstone Final P</strong><br>
+           Copyright | @PrestigeConsulting | 2021
         </span>
       </p>
     </div>
