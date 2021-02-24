@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div> 
     <!-- Nav bar -->
     <nav class="navbar navbar-dark bg-secondary justify-content-between flex-nowrap flex-row">
       <div class="container">
