@@ -8,7 +8,7 @@
             <br>
 
             <form @submit="handleSubmitForm">
-            <h3 class="text-center">Enter New Job Application</h3>
+            <h3 class="text-center">Enter New Customer</h3>
             
                 <div class="form-group" border>
                     <label>Application Submitted Date</label>
@@ -63,8 +63,8 @@
                 </thead>
                 <tbody>
                     <tr class= "d-flex" v-for="application in Applications" :key="application._id">
-                        <td class="col-2">{{ application.date }}</td>
-                        <td class="col-4">{{ application.name }}</td>
+                        <td class="col-2">{{ application.firstName }}</td>
+                        <td class="col-4">{{ application.lastName }}</td>
                         <td class="col-2">{{ application.status }}</td>
                         <td class="col-5">{{ application.comments }}</td>
                         <td class="col-3">
@@ -90,8 +90,8 @@
             return {
                 Applications: [],  
                  application: {
-                   date: '',
-                   name: '',
+                   firstName: '',
+                   lastName: '',
                    status: '',
                    comments: ''
                 }
@@ -99,7 +99,7 @@
         },
         
         created() {
-            let apiURL = 'http://localhost:4000/api';
+            let apiURL = 'http://localhost:4000/api/customer';
             axios.get(apiURL).then(res => {
                 this.Applications = res.data;
             }).catch(error => {
@@ -108,7 +108,7 @@
         },
         methods: {
             deleteStudent(id){
-                let apiURL = `http://localhost:4000/api/delete-application/${id}`;
+                let apiURL = `http://localhost:4000/api/delete-customer/${id}`;
                 let indexOfArrayItem = this.Applications.findIndex(i => i._id === id);
                     axios.delete(apiURL).then(() => {
                         this.$swal("Deletion Successful","Entry has been deleted", "error")

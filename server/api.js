@@ -26,6 +26,10 @@ router.use((request,response,next) => {
 
 
 
+
+
+
+
 router.route('/customer').get((request,response)=>{
     dboperations.getCustomer().then(result => {
         //console.log(result)
@@ -35,7 +39,22 @@ router.route('/customer').get((request,response)=>{
 }) 
 
 
-let port = process.env.PORT || 8090
+router.route('/delete-customer/:id').delete((req, res, next) => {
+    dboperations.findByIdAndDelete(req.params.id, (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.status(200).json({
+          msg: data
+        })
+      }
+    })
+  })
+
+
+
+
+let port = process.env.PORT || 4000
 app.listen(port)
 console.log('Customer API is running at ' + port)
 
