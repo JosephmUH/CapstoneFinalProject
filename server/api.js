@@ -24,32 +24,34 @@ router.use((request,response,next) => {
 })
 
 
-
-
-
-
-
-
+//Grabs all customers in table 
 router.route('/customer').get((request,response)=>{
-    dboperations.getCustomer().then(result => {
+    dboperations.getCustomers().then(result => {
         //console.log(result)
         response.json(result[0])
     })
 
 }) 
 
-
-router.route('/delete-customer/:id').delete((req, res, next) => {
-    dboperations.findByIdAndDelete(req.params.id, (error, data) => {
-      if (error) {
-        return next(error);
-      } else {
-        res.status(200).json({
-          msg: data
-        })
-      }
+//Allows a search by customers ID
+router.route('/customer/:id').get((request,response)=>{
+    dboperations.getCustomer(request.params.id).then(result => {
+        response.json(result[0])
     })
-  })
+
+}) 
+
+//Should allow creation of new customer
+router.route('/customer').post((request,response)=>{
+    let customer = {...request.body}
+
+    dboperations.addCustomer(customer).then(result => {
+        response.status(201).json(result);
+    })
+
+}) 
+
+
 
 
 
