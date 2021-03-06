@@ -24,6 +24,24 @@ const routes = [
     name: 'help',
     component: () => import('../components/Help'),
 
+  },
+  {
+    path: '/landing',
+    name: 'landing',
+    component: () => import('../components/Home'),
+
+  },
+  {
+    path: '/orders',
+    name: 'orders',
+    component: () => import('../components/View'),
+
+  },
+  {
+    path: '/allcustomers',
+    name: 'allcustomers',
+    component: () => import('../components/Customer'),
+
   }
 ]
 

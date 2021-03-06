@@ -13,37 +13,28 @@
       <div class="grid__item large--four-fifths push--large--one-tenth">
         <div class="rte rte--nomargin rte--indented-images">
           <h2>Purpose of Capstone Final Project</h2>
-          <p><strong>Assist Client with orders </strong> 
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. 
-                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <p><strong>Assist Client with Orders </strong> 
+               "The purpose of this Web Application is to organize and assist the customer in viewing and 
+               purchasing forklifts. The application allows the customer to view all available forklifts and select one to buy.
+               The application also has a back end inventory section to assist the manager in organizing records and inventory."
          </p>
 
          <h2>How to use Capstone App</h2>
          <p>
-           1.  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. 
-                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          <p> 2. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. 
-                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+           1.  "Depending on who is logging in, the application can be used in two different ways, as a customer or as the manager." 
+                
+          <p> 2. The customer can use it to view forklifts and place an order. The manager can use it to organize orders, view useful Information
+            and create orders to be shipped. </p>
           <p>
-           3. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. 
-                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           3. This app is useful for both future customers, as they can more easily view the inventory and the manager so they can 
+            organize customer and location records and view patterns and trends to expand the business.
          </p>
                 </div>
             </div>
         </div>
      </div>
     <br><br>
-    <h2 class="text-center">Title</h2>
-    <p class="text-center font-italic">Make this a link to something</p>
-         <div class="row justify-content-center">
-           <a href="https://www.linkedin.com/in/j380975ab/">
-         <img src="../assets/selfie.png" height="420px" width="360px">
-           </a> 
-      </div>
+    
 
 
 <br><br><br><br><br>
@@ -52,14 +43,12 @@
   <div class="card">
     <div class="card-header">
       <a class="card-link" data-toggle="collapse" href="#collapseOne">
-        Privacy Policy 
+        Mission Statement 
       </a>
     </div>
     <div id="collapseOne" class="collapse" data-parent="#accordion">
       <div class="card-body">
- "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. 
-  non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+ "Our mission at Premier Consulting is sharing our knowledge with ingenuity, innovation and imagination."
       </div>
     </div>
   </div>
@@ -72,8 +61,7 @@
     </div>
     <div id="collapseTwo" class="collapse" data-parent="#accordion">
       <div class="card-body">
-    incididunt ut labore et dolore magna aliqua. 
-      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    It is stored in a Microsoft SQL Database. 
       </div>
     </div>
   </div>
@@ -86,8 +74,8 @@
     </div>
     <div id="collapseThree" class="collapse" data-parent="#accordion">
       <div class="card-body">
-       Contact info 
-       <a href="mailto:  testing@gmail.com">Email.</a>
+       Contact Info 
+       <a href="mailto:ridakhazi9@gmail.com">Email</a>
       </div>
     </div>
   </div>
