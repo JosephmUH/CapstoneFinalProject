@@ -1,7 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-5">
-            <h3 class="text-center">Update Application</h3>
+            <h3 class="text-center">Update Customer</h3>
             <!-- Form handles edit submission to the interview table -->
             <form @submit.prevent="handleUpdateForm" >
                
