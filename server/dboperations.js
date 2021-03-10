@@ -47,11 +47,11 @@ catch (error){
     }
 }
 //delete customer by id
-async function deleteCustomer(customer) {
+async function deleteCustomer(customerID) {
     try{
         let pool = await sql.connect(config)
         let product = await pool.request()
-        .input('input_parameter', sql.Int, customer.Id)
+        .input('input_parameter', sql.Int, customerID)
         .query("DELETE FROM Customers WHERE Id = @input_parameter")
         return product.recordsets;
     }
@@ -60,15 +60,16 @@ catch (error){
     }
 }
 //update customer by id
-async function updateCustomer(customerID) {
+async function updateCustomer(customer) {
     try{
         let pool = await sql.connect(config)
-        let product = await pool.request()
-        .input('id', sql.Int, customer.id)
+        let updateCustomer = await pool.request()
+        .input('Id', sql.Int, customer.Id)
         .input('firstName', sql.NVarChar, customer.firstName)
         .input('lastName', sql.NVarChar, customer.lastName)
-        .query("UPDATE Customers SET Id = @id WHERE firstName = @firstName AND lastName = @lastName")
-        return product.recordsets;
+        //This is a stored procedure. You can also use a manual query 
+        .execute('UpdateCustomer')
+        return updateCustomer.recordsets;
     }
 catch (error){
     console.log(error)
