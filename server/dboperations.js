@@ -59,6 +59,21 @@ catch (error){
     console.log(error)
     }
 }
+//update customer by id
+async function updateCustomer(customerID) {
+    try{
+        let pool = await sql.connect(config)
+        let product = await pool.request()
+        .input('id', sql.Int, customer.id)
+        .input('firstName', sql.NVarChar, customer.firstName)
+        .input('lastName', sql.NVarChar, customer.lastName)
+        .query("UPDATE Customers SET Id = @id WHERE firstName = @firstName AND lastName = @lastName")
+        return product.recordsets;
+    }
+catch (error){
+    console.log(error)
+    }
+}
 
 
 

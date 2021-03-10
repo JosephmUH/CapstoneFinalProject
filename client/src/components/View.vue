@@ -6,75 +6,49 @@
    <div class="row justify-content-between">
         <div class="col-3 border">
             <br>
-
             <form @submit="handleSubmitForm">
-            <h3 class="text-center">Place a New Order</h3>
+            <h3 class="text-center">Create a New Customer</h3>
             
                 <div class="form-group" border>
-                    <label>Customer Birthdate</label>
-                    <input class="form-control" type="date" v-model="application.date" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Customer Name</label>
-                    <input class="form-control" type="text"  v-model="application.name" required>
+                    <label>Customer ID</label>
+                    <input class="form-control" type="text" v-model="customer.id" required>
                 </div>
                 <div class="form-group">
-                    <label>Customer Address</label>
-                    <input class="form-control" type="text"  v-model="application.name" required>
+                    <label>Customer First Name</label>
+                    <input class="form-control" type="text"  v-model="customer.firstName" required>
                 </div>
-
                 <div class="form-group">
-                    <label> Choose ForkLift</label>
-                      <select class="form-control" id="FormControlSelect1" v-model="application.status" required>
-                        <option value="" disabled>---Select Model---</option>
-                        <option>Warehouse Forklift.</option>
-                        <option>Side Loader</option>
-                        <option>Counterbalance Forklift</option>
-                        <option>Telehandler</option>
-                        <option>Industrial Forklift</option>
-                        <option>Rough Terrain Forklift</option>
-                        <option>Pallet Jack</option>
-                        <option>Walkie Stacker</option>
-                        <option>Reach Fork Truck</option>
-                        <option>Electric Lift Truck</option>
-                       </select>
+                    <label>Customer Last Name</label>
+                    <input class="form-control" type="text"  v-model="customer.lastName" required>
                 </div>
-                     <div class="form-group">
-                    <label for="FormControlTextarea1">Order Invoice Details</label>
-                    <textarea v-model="application.comments" required class="form-control" 
-                    id="Textarea" rows="3"  maxlength="75" placeholder="(max 75 characters)"></textarea>
-                    <span class="pull-right label label-default" id="count_message"></span>
-                </div>
-
                 <div class="form-group">
-                    <button class="orderbutton">Place Order</button>
+                    <button class="btn btn-primary btn-block">Submit</button>
                 </div>
             </form>
         </div>
         <!-- Each Column has a different length suitable for its data -->
         <div class="col-9">
             <h2 class="text-center">Customer Order Logs</h2>
-            <table class=" display table table-bordered"  style="width:75%">
+            <table class=" display table table-bordered"  style="width:100%">
                 <thead class="thead-dark">
                     <tr class="d-flex">
-                        <th class="col-2">Name</th>
-                        <th class="col-4">Date</th>
-                        <th class="col-2">Forklift</th>
-                        <th class="col-5">Price</th>
-                        <th class="col-3">Order ID</th>
+                        <th class="col-2">Customer ID</th>
+                        <th class="col-3">Customer First</th>
+                        <th class="col-3">Customer Last</th>
+                        <th class="col-2">Actions</th>
+                        <!--<th class="col-3">Order ID</th>-->
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class= "d-flex" v-for="application in Applications" :key="application._id">
-                        <td class="col-2">{{ application.firstName }}</td>
-                        <td class="col-3">{{ application.lastName }}</td>
-                        <td class="col-2">{{ application.status }}</td>
-                        <td class="col-3">{{ application.comments }}</td>
-                        <td class="col-3">
-                            <router-link :to="{name: 'edit', params: { id: application._id }}" class="btn btn-success btn-sm">Modify
+                    <tr class= "d-flex" v-for="customer in Customers" :key="customer.id">
+                        <td class="col-2">{{ customer.id }}</td>
+                        <td class="col-3">{{ customer.firstName }}</td>
+                        <td class="col-3">{{ customer.lastName }}</td>
+                        <!--<td class="col-3">{{ application.comments }}</td>-->
+                        <td class="col-2">
+                            <router-link :to="{name: 'edit', params: { id: customer.id }}" class="btn btn-success btn-sm">Modify
                             </router-link>
-                            <button @click.prevent="deleteStudent(application._id)" class="btn btn-danger btn-sm">Delete</button>
+                            <button @click.prevent="deleteCustomer(customer.id)" class="btn btn-danger btn-sm">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -100,12 +74,12 @@
     export default {
         data() {
             return {
-                Applications: [],  
-                 application: {
+                Customers: [],  
+                 customer: {
+                   id: '',
                    firstName: '',
-                   lastName: '',
-                   status: '',
-                   comments: ''
+                   lastName: ''
+                   
                 }
             }
         },
@@ -113,32 +87,31 @@
         created() {
             let apiURL = 'http://localhost:4000/api/customer';
             axios.get(apiURL).then(res => {
-                this.Applications = res.data;
+                this.Customers = res.data;
             }).catch(error => {
                 console.log(error)
             })
         },
         methods: {
-            deleteStudent(id){
-                let apiURL = `http://localhost:4000/api/delete-customer/${id}`;
-                let indexOfArrayItem = this.Applications.findIndex(i => i._id === id);
+            deleteCustomer(id){
+                let apiURL = `http://localhost:4000/api/customer/${id}`;
+                let indexOfArrayItem = this.Customers.findIndex(i => i._id === id);
                     axios.delete(apiURL).then(() => {
                         this.$swal("Deletion Successful","Entry has been deleted", "error")
-                        this.Applications.splice(indexOfArrayItem, 1);
+                        this.Customers.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
             },
 
            handleSubmitForm() {
-                let apiURL = 'http://localhost:4000/api/create-application'
-                axios.post(apiURL, this.application).then(() => {
-                  this.application = {
-                    date: '',
-                    name: '',
-                    status: '',
-                    comments: ''
-                  }
+                let apiURL = 'http://localhost:4000/api/customer'
+                axios.post(apiURL, this.customer).then(() => {
+                  this.customer = {
+                    id: '',
+                    firstName: '',
+                    lastName: ''
+                     }
                 }).catch(error => {
                     console.log(error)
                 })
