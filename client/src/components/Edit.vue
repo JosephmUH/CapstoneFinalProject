@@ -36,7 +36,9 @@ export default {
         let apiURL = `http://localhost:4000/api/edit-customer/${this.$route.params.id}`;
         axios.get(apiURL).then((res) => {
             this.customer = res.data;
-        })
+        }).catch(error => {
+                console.log(error)
+            })
     },
     methods: {
         handleUpdateForm() {
@@ -51,7 +53,7 @@ export default {
                   buttons: false,
                   })
                 console.log(res)
-                this.$router.push('/view')
+                this.$router.push('/orders')
             }).catch(error => {
                 console.log(error)
             })

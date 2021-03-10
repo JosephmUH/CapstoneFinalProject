@@ -37,7 +37,6 @@ router.route('/customer').get((request,response)=>{
 router.route('/edit-customer/:id').get((request,response)=>{
     dboperations.getCustomer(request.params.id).then(result => {
         response.json(result[0])
-        console.log(result)
     })
 
 }) 
