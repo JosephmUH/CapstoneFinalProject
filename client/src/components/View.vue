@@ -9,10 +9,7 @@
             <form @submit="handleSubmitForm">
             <h3 class="text-center">Create a New Customer</h3>
             
-                <div class="form-group" border>
-                    <label>Customer ID</label>
-                    <input class="form-control" type="text" v-model="customer.id" required>
-                </div>
+            
                 <div class="form-group">
                     <label>Customer First Name</label>
                     <input class="form-control" type="text"  v-model="customer.firstName" required>
@@ -105,7 +102,7 @@
             },
 
            handleSubmitForm() {
-                let apiURL = 'http://localhost:4000/api/customer'
+                let apiURL = 'http://localhost:4000/api/add-customer'
                 axios.post(apiURL, this.customer).then(() => {
                   this.customer = {
                     id: '',

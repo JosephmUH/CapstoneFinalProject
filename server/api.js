@@ -42,7 +42,7 @@ router.route('/customer/:id').get((request,response)=>{
 }) 
 
 //Should allow creation of new customer
-router.route('/customer').post((request,response)=>{
+router.route('/add-customer').post((request,response)=>{
     let customer = {...request.body}
 
     dboperations.addCustomer(customer).then(result => {
