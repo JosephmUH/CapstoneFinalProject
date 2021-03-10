@@ -34,9 +34,10 @@ router.route('/customer').get((request,response)=>{
 }) 
 
 //Allows a search by customers ID
-router.route('/customer/:id').get((request,response)=>{
+router.route('/edit-customer/:id').get((request,response)=>{
     dboperations.getCustomer(request.params.id).then(result => {
         response.json(result[0])
+        console.log(result)
     })
 
 }) 
@@ -44,15 +45,18 @@ router.route('/customer/:id').get((request,response)=>{
 //Should allow creation of new customer
 router.route('/add-customer').post((request,response)=>{
     let customer = {...request.body}
-
     dboperations.addCustomer(customer).then(result => {
         response.status(201).json(result);
     })
 
 }) 
+
+//For update we need to create a UPDATE CUSTOMER SET AND WHERE type stored procedure
+
+
+
 //should allow deletion of customer
 router.route('/customer/:id').delete((request,response)=>{
-
     dboperations.deleteCustomer(request.params.id).then(result => {
         response.status(201).json(result);
         response.send('User deleted.');

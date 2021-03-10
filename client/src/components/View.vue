@@ -50,10 +50,11 @@
                     </tr>
                 </tbody>
             </table>
+            <br><br>
             <div class = "buttontable">
               <table>
                 <tr>
-              <td><button class="btn btn-sm sortbutton">Sort</button></td>
+              <td><button class="btn btn-sm sortbutton ">Sort</button></td>
                 <td><router-link class="btn btn-sm customerbutton pr-3" to="/allcustomers">View All Customers</router-link></td>
                 </tr>
                 </table>
