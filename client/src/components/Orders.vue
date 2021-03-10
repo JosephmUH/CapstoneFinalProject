@@ -92,7 +92,7 @@
         },
         methods: {
             deleteCustomer(id){
-                let apiURL = `http://localhost:4000/api/customer/${id}`;
+                let apiURL = `http://localhost:4000/api/delete-customer/${id}`;
                 let indexOfArrayItem = this.Customers.findIndex(i => i._id === id);
                     axios.delete(apiURL).then(() => {
                         this.$swal("Deletion Successful","Entry has been deleted", "error")

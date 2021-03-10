@@ -47,12 +47,12 @@ catch (error){
     }
 }
 //delete customer by id
-async function deleteCustomer(customer) {
+async function deleteCustomer(customerID) {
     try{
         let pool = await sql.connect(config)
         let product = await pool.request()
-        .input('input_parameter', sql.Int, customer.Id)
-        .query("DELETE FROM Customers WHERE Id = @input_parameter")
+        .input('Id', sql.Int, customerID)
+        .execute('DeleteCustomer')        
         return product.recordsets;
     }
 catch (error){
