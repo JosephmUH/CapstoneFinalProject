@@ -29,20 +29,20 @@
             <table class=" display table table-bordered"  style="width:100%">
                 <thead class="thead-dark">
                     <tr class="d-flex">
-                        <th class="col-2">Customer ID</th>
+                        <th class="col-3">Customer ID</th>
                         <th class="col-3">Customer First</th>
                         <th class="col-3">Customer Last</th>
-                        <th class="col-2">Actions</th>
+                        <th class="col-3">Actions</th>
                         <!--<th class="col-3">Order ID</th>-->
                     </tr>
                 </thead>
                 <tbody>
                     <tr class= "d-flex" v-for="customer in Customers" :key="customer.id">
-                        <td class="col-2">{{ customer.id }}</td>
+                        <td class="col-3">{{ customer.id }}</td>
                         <td class="col-3">{{ customer.firstName }}</td>
                         <td class="col-3">{{ customer.lastName }}</td>
                         <!--<td class="col-3">{{ application.comments }}</td>-->
-                        <td class="col-2">
+                        <td class="col-3">
                             <router-link :to="{name: 'edit', params: { id: customer.id }}" class="btn btn-success btn-sm">Modify
                             </router-link>
                             <button @click.prevent="deleteCustomer(customer.id)" class="btn btn-danger btn-sm">Delete</button>
