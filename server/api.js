@@ -51,7 +51,7 @@ router.route('/add-customer').post((request,response)=>{
 }) 
 
 //For update we need to create a UPDATE CUSTOMER SET AND WHERE type stored procedure
-router.route('/add-customer').post((request,response)=>{
+router.route('/update-customer').post((request,response)=>{
     let customer = {...request.body}
     dboperations.addCustomer(customer).then(result => {
         response.status(201).json(result);
