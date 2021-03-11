@@ -51,8 +51,8 @@ async function deleteCustomer(customerID) {
     try{
         let pool = await sql.connect(config)
         let product = await pool.request()
-        .input('input_parameter', sql.Int, customerID)
-        .query("DELETE FROM Customers WHERE Id = @input_parameter")
+        .input('Id', sql.Int, customerID)
+        .execute('DeleteCustomer')        
         return product.recordsets;
     }
 catch (error){

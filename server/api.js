@@ -63,7 +63,6 @@ router.route('/add-customer').post((request,response)=>{
 router.route('/delete-customer/:id').delete((request,response)=>{
     dboperations.deleteCustomer(request.params.id).then(result => {
         response.status(201).json(result);
-        response.send('User deleted.');
     })
 
 }) 
