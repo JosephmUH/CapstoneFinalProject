@@ -59,8 +59,6 @@ router.route('/add-customer').post((request,response)=>{
 
 }) 
 
-
-
 //should allow deletion of customer
 router.route('/delete-customer/:id').delete((request,response)=>{
     dboperations.deleteCustomer(request.params.id).then(result => {
