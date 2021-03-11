@@ -20,8 +20,8 @@ async function getCustomer(customerID) {
     try{
         let pool = await sql.connect(config)
         let product = await pool.request()
-        .input('input_parameter', sql.Int, customerID)
-        .query("SELECT * From Customers where Id = @input_parameter")
+        .input('Id', sql.Int, customerID)
+        .execute('EditCustomer')
         return product.recordsets;
     }
 catch (error){

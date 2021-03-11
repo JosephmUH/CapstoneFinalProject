@@ -4,7 +4,6 @@
             <h3 class="text-center">Update Customer</h3>
             <!-- Form handles edit submission to the interview table -->
             <form @submit.prevent="handleUpdateForm" >
-               
                 <div class="form-group">
                     <label>Customer First Name</label>
                     <input class="form-control" v-model="customer.firstName" required>
