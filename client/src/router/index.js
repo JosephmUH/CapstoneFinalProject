@@ -36,13 +36,13 @@ const routes = [
     name: 'orders',
     component: () => import('../components/Orders'),
 
-  },
-  {
-    path: '/allcustomers',
-    name: 'allcustomers',
-    component: () => import('../components/Customer'),
-
   }
+  // {
+  //   path: '/allcustomers',
+  //   name: 'allcustomers',
+  //   component: () => import('../components/Customer'),
+
+  // }
 ]
 
 const router = new VueRouter({
