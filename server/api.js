@@ -36,8 +36,8 @@ router.route('/customer').get((request,response)=>{
 //Allows a search by customers ID
 router.route('/edit-customer/:id').get((request,response)=>{
     dboperations.getCustomer(request.params.id).then(result => {
-        response.json(result)
-        console.log(result)
+        response.json(result[0])
+        console.log(result[0])
     })
 
 }) 
