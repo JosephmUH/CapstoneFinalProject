@@ -1,20 +1,45 @@
 let Db = require('./dboperations')
 let Customer = require('./customer')
 const dboperations = require('./dboperations')
+bodyParser = require('body-parser')
+cors = require('cors')
+
+
 
 
 let express = require('express')
-let bodyParser = require('body-parser')
-let cors = require('cors')
-const { response } = require('express')
-let app = express()
-let router = express.Router();
-
-app.use(bodyParser.urlencoded({extended: true}))
-
+const app = express();
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors())
+
+const router = express.Router();
+
+
+//Creates API
 app.use('/api', router)
+
+//Setups up Port to run on 
+const port = process.env.PORT || 4000
+app.listen(port)
+console.log('Customer API is running at ' + port)
+
+
+//Handles Errors
+app.use(function (err, req, res, next) {
+    console.error(err.message);
+    if (!err.statusCode) err.statusCode = 500;
+    res.status(err.statusCode).send(err.message)
+  })
+
+
+  //Handles 404 Errors
+app.use((request, response, next) => {
+    next(createError(404));
+  })
+  
+
+// const { response } = require('express')
 
 
 
@@ -71,13 +96,9 @@ router.route('/delete-customer/:id').delete((request,response)=>{
 }) 
 
 
-let port = process.env.PORT || 4000
-app.listen(port)
-console.log('Customer API is running at ' + port)
 
 
 
-
-dboperations.getCustomer().then(result => {
-    console.log(result);
-})
+// dboperations.getCustomer().then(result => {
+//     console.log(result);
+// })

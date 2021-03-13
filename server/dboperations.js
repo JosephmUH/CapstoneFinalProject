@@ -46,6 +46,24 @@ catch (error){
     console.log(error)
     }
 }
+
+//update customer by id
+async function updateCustomer(customer) {
+    try{
+        let pool = await sql.connect(config)
+        let uCustomer = await pool.request()
+        .input('Id', sql.Int, customer.Id)
+        .input('firstName', sql.NVarChar, customer.firstName)
+        .input('lastName', sql.NVarChar, customer.lastName)
+        //This is a stored procedure. You can also use a manual query 
+        .execute('UpdateCustomer')
+        return uCustomer.recordsets;
+    }
+catch (error){
+    console.log(error)
+    }
+}
+
 //delete customer by id
 async function deleteCustomer(customerID) {
     try{
@@ -54,22 +72,6 @@ async function deleteCustomer(customerID) {
         .input('Id', sql.Int, customerID)
         .execute('DeleteCustomer')        
         return product.recordsets;
-    }
-catch (error){
-    console.log(error)
-    }
-}
-//update customer by id
-async function updateCustomer(customer) {
-    try{
-        let pool = await sql.connect(config)
-        let updateCustomer = await pool.request()
-        .input('Id', sql.Int, customer.Id)
-        .input('firstName', sql.NVarChar, customer.firstName)
-        .input('lastName', sql.NVarChar, customer.lastName)
-        //This is a stored procedure. You can also use a manual query 
-        .execute('UpdateCustomer')
-        return updateCustomer.recordsets;
     }
 catch (error){
     console.log(error)
