@@ -28,13 +28,14 @@ import axios from "axios";
 export default {
   data() {
             return {  
-                 customer: { }
+                 customer: { },  
+                 
             }
         },
     created() {
         let apiURL = `http://localhost:4000/api/edit-customer/${this.$route.params.id}`;
         axios.get(apiURL).then((res) => {
-            this.customer = res.data;
+            this.customer = res.data[0];
         }).catch(error => {
                 console.log(error)
             })

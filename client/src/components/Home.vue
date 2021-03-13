@@ -6,6 +6,9 @@
 	</head>
     <div class="center">
     <div>
+        <div class="row justify-content-center">
+         <img src="../assets/tb-logo.png" height="171px" width="804px">
+      </div>
         <h1 >Welcome to TB Forklifts</h1>
         <p >In this application, we are trying to build a simple CRM for management purposes. Thank you.</p>
         <p><router-link class="btn btn-secondary" to="/orders">Place Order</router-link></p>
