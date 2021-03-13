@@ -1,5 +1,5 @@
 let Db = require('./dboperations')
-let Customer = require('./customer')
+var Customer = require('./customer')
 const dboperations = require('./dboperations')
 
 
@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cors())
 app.use('/api', router)
+
 
 
 
@@ -36,7 +37,7 @@ router.route('/customer').get((request,response)=>{
 //Allows a search by customers ID
 router.route('/edit-customer/:id').get((request,response)=>{
     dboperations.getCustomer(request.params.id).then(result => {
-        response.json(result[0])
+         response.json(result[0])
     })
 
 }) 
@@ -54,7 +55,7 @@ router.route('/add-customer').post((request,response)=>{
 router.route('/update-customer/:id').post((request,response)=>{
     let customer = {...request.body}
     dboperations.updateCustomer(customer).then(result => {
-        response.status(201).json(result);
+        response.status(201).json(result[0]);
     })
 
 }) 
