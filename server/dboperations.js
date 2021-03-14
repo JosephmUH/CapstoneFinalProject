@@ -1,6 +1,9 @@
 let config = require('./dbconfig')
 const sql = require('mssql')
 
+
+
+
 //Pulls all data from Customer Table
 async function getCustomers(){
     try{
@@ -56,7 +59,10 @@ async function updateCustomer(customer) {
         .input('firstName', sql.NVarChar, customer.firstName)
         .input('lastName', sql.NVarChar, customer.lastName)
         //This is a stored procedure. You can also use a manual query 
-        .execute('UpdateCustomer')
+        // .execute('UpdateCustomer')
+        //Error is something with the ID values not being passed in. It doesn't know what query to update
+        .query("UPDATE [dbo].[Customers] SET firstName = @firstName, lastName = @lastName WHERE id ="+22)
+
         return uCustomer.recordsets;
     }
 catch (error){

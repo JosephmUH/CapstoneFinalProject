@@ -44,14 +44,7 @@ export default {
         handleUpdateForm() {
             let apiURL = `http://localhost:4000/api/update-customer/${this.$route.params.id}`;
             axios.post(apiURL, this.customer).then((res) => {
-                 this.$swal({
-                  icon: 'success',
-                  title:"Success",
-                  text: "Your application has been updated!",
-                  type: "success",
-                  timer: 3000,
-                  buttons: false,
-                  })
+                this.$swal("Update Successful","Entry has been updated", "success")
                 console.log(res)
                 this.$router.push('/orders')
             }).catch(error => {
