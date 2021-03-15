@@ -46,9 +46,7 @@
                         <th class="col-2">Customer ID</th>
                         <th class="col-3">Customer First</th>
                         <th class="col-3">Customer Last</th>
-                        <th class="col-3">Customer Phone</th>
-                        <th class="col-3">Customer Home Address</th>
-                        <th class="col-3">Customer Email</th>
+                       
                         <th class="col-4">Actions</th>
                         <!--<th class="col-3">Order ID</th>-->
                     </tr>
@@ -58,9 +56,7 @@
                         <td class="col-2">{{ customer.id }}</td>
                         <td class="col-3">{{ customer.firstName }}</td>
                         <td class="col-3">{{ customer.lastName }}</td>
-                        <td class="col-3">{{ customer.phone }}</td>
-                        <td class="col-3">{{ customer.home_address }}</td>
-                        <td class="col-3">{{ customer.email }}</td>
+                        
                         <!--<td class="col-3">{{ application.comments }}</td>-->
                         <td class="col-4">
                             <router-link :to="{name: 'edit', params: { id: customer.id }}" class="btn btn-secondary">Modify

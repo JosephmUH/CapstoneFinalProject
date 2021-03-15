@@ -48,7 +48,13 @@ const routes = [
    name: 'viewcustomers',
     component: () => import('../components/ViewCustomer'),
 
- }
+ },
+ {
+  path: '/orderreports',
+ name: 'reports',
+  component: () => import('../components/OrderReports'),
+
+}
 ]
 
 const router = new VueRouter({

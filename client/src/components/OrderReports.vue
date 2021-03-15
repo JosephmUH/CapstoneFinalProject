@@ -1,8 +1,8 @@
 <template>
     <div id = "index" class = "myindex">
-        <h1>Customer Details</h1> <!-- to view a kitten in detail-->
+        <h1>Order Reports</h1> <!-- to view a kitten in detail-->
 
-        <table class="table table-dark">
+        <table class="table table-light display table table-bordered">
             <thead>
             <tr>
                

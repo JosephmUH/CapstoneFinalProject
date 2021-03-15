@@ -9,6 +9,9 @@
                 <td>Customer First Name</td>
                 <td>Customer Last Name</td>
                 <td>Customer Id</td>
+                <td>Customer Phone</td>
+                <td>Customer Home Address</td>
+                <td>Customer Email</td>
                 
                 
             </tr>
@@ -19,6 +22,9 @@
                     <td>{{ customer.firstName }}</td>
                     <td>{{ customer.lastName }}</td>
                     <td>{{ customer.id }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.home_address }}</td>
+                    <td>{{ customer.email }}</td>
                     
                 </tr>
             </tbody>
@@ -47,15 +53,7 @@ import axios from "axios";
             })
     },
 
-        methods: {
-             getoneItem()
-            {
-             let uri = 'http://localhost:4000/edit-customer/' + this.$route.params.id;
-                this.axios.get(uri).then((response) => {
-                    this.viewItems = response.data;
-                });
-            },
-        }
+        
     }
 </script>
 <style>
