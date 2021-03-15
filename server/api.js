@@ -80,7 +80,8 @@ router.route('/add-customer').post((request,response)=>{
 router.route('/update-customer/:id').post((request,response)=>{
     let customer = {...request.body}
     dboperations.updateCustomer(customer).then(result => {
-        response.status(201).json(result[0]);
+        console.log("router.route customer ID = " + customer.id)
+        response.status(201).json(result);
     })
 
 }) 

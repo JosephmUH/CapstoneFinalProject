@@ -1,6 +1,9 @@
 let config = require('./dbconfig')
 const sql = require('mssql')
 
+
+
+
 //Pulls all data from Customer Table
 async function getCustomers(){
     try{
@@ -22,13 +25,14 @@ async function getCustomer(customerID) {
         let product = await pool.request()
         .input('Id', sql.Int, customerID)
         .execute('EditCustomer')
+        //Testing if Customer ID is passed in edit screen
+        // console.log("customer ID being passed in " + customerID)
         return product.recordsets;
     }
 catch (error){
     console.log(error)
     }
 }
-
 
 //Create a Customer Record
 async function addCustomer(customer) {
@@ -38,6 +42,10 @@ async function addCustomer(customer) {
         .input('Id', sql.Int, customer.Id)
         .input('firstName', sql.NVarChar, customer.firstName)
         .input('lastName', sql.NVarChar, customer.lastName)
+        .input('phone', sql.NVarChar, customer.phone)
+        .input('home_address', sql.NVarChar, customer.home_address)
+        .input('email', sql.NVarChar, customer.email)
+        
         //This is a stored procedure. You can also use a manual query 
         .execute('InsertCustomer')
         return insertCustomer.recordsets;
@@ -47,17 +55,26 @@ catch (error){
     }
 }
 
+
 //update customer by id
 async function updateCustomer(customer) {
     try{
         let pool = await sql.connect(config)
-        let uCustomer = await pool.request()
-        .input('Id', sql.Int, customer.Id)
+        let product = await pool.request()
+        .input('id', sql.Int, customer.id)
         .input('firstName', sql.NVarChar, customer.firstName)
         .input('lastName', sql.NVarChar, customer.lastName)
+        .input('phone', sql.NVarChar, customer.phone)
+        .input('home_address', sql.NVarChar, customer.home_address)
+        .input('email', sql.NVarChar, customer.email)
         //This is a stored procedure. You can also use a manual query 
         .execute('UpdateCustomer')
-        return uCustomer.recordsets;
+        //Error is something with the ID values not being passed in. It doesn't know what query to update
+        // .query("UPDATE [dbo].[Customers] SET firstName = @firstName, lastName = @lastName WHERE id = @id")
+        console.log("async Function | customer ID being passed in " + customer.id)
+        console.log("async Function | customer firstName being passed in " + customer.firstName)
+        console.log("async Function | customer lastName being passed in " + customer.lastName)
+        return product.recordsets
     }
 catch (error){
     console.log(error)

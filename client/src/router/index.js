@@ -36,13 +36,19 @@ const routes = [
     name: 'orders',
     component: () => import('../components/Orders'),
 
-  }
-  // {
-  //   path: '/allcustomers',
-  //   name: 'allcustomers',
-  //   component: () => import('../components/Customer'),
+  },
+   {
+     path: '/customers',
+    name: 'customers',
+     component: () => import('../components/Customers'),
 
-  // }
+  },
+  {
+    path: '/edit-customer/:id',
+   name: 'viewcustomers',
+    component: () => import('../components/ViewCustomer'),
+
+ }
 ]
 
 const router = new VueRouter({
