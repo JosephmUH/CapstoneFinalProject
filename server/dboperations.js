@@ -25,13 +25,14 @@ async function getCustomer(customerID) {
         let product = await pool.request()
         .input('Id', sql.Int, customerID)
         .execute('EditCustomer')
+        //Testing if Customer ID is passed in edit screen
+        // console.log("customer ID being passed in " + customerID)
         return product.recordsets;
     }
 catch (error){
     console.log(error)
     }
 }
-
 
 //Create a Customer Record
 async function addCustomer(customer) {
@@ -50,20 +51,23 @@ catch (error){
     }
 }
 
+
 //update customer by id
 async function updateCustomer(customer) {
     try{
         let pool = await sql.connect(config)
-        let uCustomer = await pool.request()
-        .input('Id', sql.Int, customer.Id)
+        let product = await pool.request()
+        .input('id', sql.Int, customer.id)
         .input('firstName', sql.NVarChar, customer.firstName)
         .input('lastName', sql.NVarChar, customer.lastName)
         //This is a stored procedure. You can also use a manual query 
-        // .execute('UpdateCustomer')
+        .execute('UpdateCustomer')
         //Error is something with the ID values not being passed in. It doesn't know what query to update
-        .query("UPDATE [dbo].[Customers] SET firstName = @firstName, lastName = @lastName WHERE id ="+22)
-
-        return uCustomer.recordsets;
+        // .query("UPDATE [dbo].[Customers] SET firstName = @firstName, lastName = @lastName WHERE id = @id")
+        console.log("async Function | customer ID being passed in " + customer.id)
+        console.log("async Function | customer firstName being passed in " + customer.firstName)
+        console.log("async Function | customer lastName being passed in " + customer.lastName)
+        return product.recordsets
     }
 catch (error){
     console.log(error)
