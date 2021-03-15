@@ -12,10 +12,7 @@
                     <label>Customer Last Name</label>
                     <input class="form-control" v-model="customer.lastName" required>
                 </div>
-                     <div class="form-group">
-                    <label>ID</label>
-                    <input class="form-control" v-model="customer.id" required>
-                </div>
+                  
                  <br>
                  <div class="form-group">
                     <button class="btn btn-primary btn-block">Update</button>
